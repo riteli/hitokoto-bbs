@@ -47,7 +47,7 @@ app.post("/posts", async (req, res) => {
   if (content.length === 0 || content.length > 280) {
     return res.status(400).send("本文は1～280文字で入力してください");
   }
-  await prisma.post.create({ data: { content, trackingId: req.trackingId } });
+  await prisma.post.create({ data: { content, postedBy: req.trackingId } });
   res.redirect("/");
 });
 
